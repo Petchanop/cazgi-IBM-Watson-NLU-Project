@@ -70,8 +70,8 @@ app.get("/url/sentiment", (req,res) => {
   },
 };
 getNLUInstance().analyze(analyzeParams).then(analysisResults => {
-    console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment, null, 2));
-    return res.send("url sentiment for " + req.query.url+ " " + JSON.stringify(analysisResults.result.keywords[0].sentiment, null, 2));
+    console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment.label, null, 2));
+    return res.send(JSON.stringify(analysisResults.result.keywords[0].sentiment.label, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
@@ -117,8 +117,8 @@ app.get("/text/sentiment", (req,res) => {
   },
 };
 getNLUInstance().analyze(analyzeParams).then(analysisResults => {
-    console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment, null, 2));
-    return res.send("text sentiment for " + req.query.text + " "+ JSON.stringify(analysisResults.result.keywords[0].sentiment, null, 2));
+    console.log(JSON.stringify(analysisResults.result.keywords[0].sentiment.label, null, 2));
+    return res.send(JSON.stringify(analysisResults.result.keywords[0].sentiment.label, null, 2));
   })
   .catch(err => {
     console.log('error:', err);
